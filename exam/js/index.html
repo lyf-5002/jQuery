@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+       .container {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+       .nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+       .nav a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+       .main {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+       .submenu {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+       .back-btn {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            background-color: #ccc;
+            color: #000;
+            padding: 8px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 注册界面 -->
+    <div id="register" class="container">
+        <h2>注册</h2>
+        <input type="text" id="reg-username" placeholder="用户名">
+        <input type="password" id="reg-password" placeholder="密码">
+        <button onclick="register()">注册</button>
+        <div class="nav">
+            <a href="#" onclick="showLogin()">已有账号？登录</a>
+        </div>
+    </div>
+
+    <!-- 登录界面 -->
+    <div id="login" class="container">
+        <h2>登录</h2>
+        <input type="text" id="login-username" placeholder="用户名">
+        <input type="password" id="login-password" placeholder="密码">
+        <button onclick="login()">登录</button>
+        <div class="nav">
+            <a href="#" onclick="showRegister()">没有账号？注册</a>
+        </div>
+    </div>
+
+    <!-- 主页面 -->
+    <div id="main-page" class="main">
+        <h2>欢迎来到学生管理系统</h2>
+        <button onclick="showStudentOptions()">学生</button>
+        <button onclick="showTeacherOptions()">教师</button>
+        <button onclick="showAdminOptions()">管理员</button>
+    </div>
+
+    <!-- 学生选项 -->
+    <div id="student-options" class="submenu">
+        <button onclick="showStudentScore()">查询成绩</button>
+        <button onclick="showCourseSelection()">选课</button>
+        <button onclick="showStudentInfo()">学生信息</button>
+        <a href="#" class="back-btn" onclick="showMainPage()">返回</a>
+    </div>
+
+    <!-- 教师选项 -->
+    <div id="teacher-options" class="submenu">
+        <button onclick="showQueryClassroom()">查询教室</button>
+        <button onclick="showQueryStudentScores()">查询学生成绩</button>
+        <button onclick="showQueryClassroomInfo()">查询教师信息</button>
+        <a href="#" class="back-btn" onclick="showMainPage()">返回</a>
+    </div>
+
+   <!-- 管理员选项 -->
+       <div id="admin-options" class="submenu">
+           <button onclick="showModifyStudentInfo()">修改学生信息</button>
+           <button onclick="showModifyClassroomInfo()">修改教师信息</button>
+           <a href="#" class="back-btn" onclick="showMainPage()">返回</a>
+       </div>
+   
+       <script>
+           function showRegister() {
+               document.getElementById('register').style.display = 'block';
+               document.getElementById('login').style.display = 'none';
+               document.getElementById('main-page').style.display = 'none';
+           }
+   
+           function showLogin() {
+               document.getElementById('register').style.display = 'none';
+               document.getElementById('login').style.display = 'block';
+               document.getElementById('main-page').style.display = 'none';
+           }
+   
+           function register() {
+               // 这里可以添加注册逻辑，比如发送数据到服务器
+               // 暂时模拟注册成功后跳转登录
+               showLogin();
+           }
+   
+           function login() {
+               // 这里可以添加登录验证逻辑，比如检查用户名和密码是否匹配
+               // 暂时模拟登录成功后跳转主页面
+               document.getElementById('login').style.display = 'none';
+               document.getElementById('main-page').style.display = 'block';
+           }
+   
+           function showStudentOptions() {
+               document.getElementById('student-options').style.display = 'block';
+               document.getElementById('main-page').style.display = 'none';
+           }
+   
+           function showTeacherOptions() {
+               document.getElementById('teacher-options').style.display = 'block';
+               document.getElementById('main-page').style.display = 'none';
+           }
+   
+           function showAdminOptions() {
+               document.getElementById('admin-options').style.display = 'block';
+               document.getElementById('main-page').style.display = 'none';
+           }
+   
+           function showStudentScore() {
+               // 这里可以添加查询成绩的页面逻辑
+               alert('学生成绩.html');
+			   window.location.href = '学生成绩.html';
+			   
+           }
+   
+           function showCourseSelection() {
+               // 这里可以添加选课的页面逻辑
+               alert('选课.html');
+			   window.location.href = '选课.html';
+           }
+   
+           function showStudentInfo() {
+               // 这里可以添加学生信息的页面逻辑
+               alert('学生信息.html');
+			   window.location.href = '学生信息.html';
+           }
+   
+           function showQueryClassroom() {
+               // 这里可以添加查询教室的页面逻辑
+               alert('查询教室.html');
+			   window.location.href = '查询教室.html';
+           }
+   
+           function showQueryStudentScores() {
+               // 这里可以添加查询学生成绩的页面逻辑
+               alert('查询成绩.html');
+			   window.location.href = '查询成绩.html';
+           }
+   
+           function showQueryClassroomInfo() {
+               // 这里可以添加查询教师信息的页面逻辑
+               alert('查询教师信息.html');
+			   window.location.href = '查询教师信息.html';
+           }
+   
+           function showModifyStudentInfo() {
+               // 这里可以添加修改学生信息的页面逻辑
+               alert('修改学生信息.html');
+			   window.location.href = '修改学生信息.html';
+           }
+   
+           function showModifyClassroomInfo() {
+               // 这里可以添加修改教师信息的页面逻辑
+               alert('修改教师信息.html');
+			   window.location.href = '修改教师.html';
+           }
+   
+           function showMainPage() {
+               document.getElementById('student-options').style.display = 'none';
+               document.getElementById('teacher-options').style.display = 'none';
+               document.getElementById('admin-options').style.display = 'none';
+               document.getElementById('main-page').style.display = 'block';
+           }
+       </script>
+   </body>
+   
+   </html>
+
+
